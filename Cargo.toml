@@ -9,4 +9,5 @@ edition = "2021"
 walkdir = "2.3.2"
 chrono = "0.4"
 rayon = "1.5.1"
+indicatif = "0.15.0"
 
