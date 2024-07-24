@@ -1,3 +1,5 @@
+.PHONY=build install
+
 # FileName
 BIN=sd_importer
 
@@ -13,4 +15,4 @@ build:
 
 # Install the package by coping to the release
 install:
-	@sudo cp target/release/$(BIN) $(DEST)
+	@cargo install --path .
