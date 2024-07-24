@@ -66,7 +66,7 @@ fn main() {
         .filter(|e| match e.path().extension() {
             Some(ext) => {
                 let ext_str = ext.to_string_lossy().to_lowercase();
-                if ext_str == "arw" || ext_str == "mp4" || ext_str == "jpg" {
+                if ext_str == "arw" || ext_str == "mp4" || ext_str == "jpg" || ext_str == "heic" {
                     true
                 } else {
                     unaccepted_extensions.insert(ext.to_os_string());
@@ -90,12 +90,12 @@ fn main() {
     
     let progress_bar = ProgressBar::new(files.len() as u64);
     progress_bar.set_style(ProgressStyle::default_bar()
-        .template("{spinner:.green} [{elapsed_precise}] [{bar:40.cyan/blue}] {pos}/{len} ({eta})")
-        .progress_chars("#>-"));
+        .template("{spinner:.green} [{elapsed_precise}] [{bar:40.cyan/blue}] {pos}/{len} [{per_sec}] ({eta_precise})")
+        .tick_chars("⠁⠂⠄⡀⢀⠠⠐⠈ "));
 
     // Create a thread pool with a specific number of threads
     let pool = ThreadPoolBuilder::new()
-        .num_threads(4)  // set the number of threads here
+        .num_threads(6)  // set the number of threads here
         .build()
         .unwrap();
 
